@@ -1,0 +1,18 @@
+<script type="module">
+    import { supabase } from "./supabase/config.js";
+
+    async function loadFixtures() {
+        const { data } = await supabase
+            .from("fixtures")
+            // .select("*, home:teams!home_team_id(name), away:teams!away_team_id(name)");
+            .select("*, home:teams!home_team_id(name, badge_url), away:teams!away_team_id(name, badge_url)");
+
+        data.forEach(f => {
+            document.body.innerHTML += `
+      <div>${f.home.name} vs ${f.away.name} (${f.match_date})</div>
+    `;
+        });
+    }
+
+    loadFixtures();
+</script>

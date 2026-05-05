@@ -1,0 +1,17 @@
+<script type="module">
+    import { supabase } from "./supabase/config.js";
+
+    async function loadResults() {
+        const { data } = await supabase
+            .from("results")
+            .select("*, fixtures(*, home:teams!home_team_id(name), away:teams!away_team_id(name))");
+
+        data.forEach(r => {
+            document.body.innerHTML += `
+      <div>${r.fixtures.home.name} ${r.home_score} - ${r.away_score} ${r.fixtures.away.name}</div>
+    `;
+        });
+    }
+
+    loadResults();
+</script>

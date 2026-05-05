@@ -1,0 +1,14 @@
+<script type="module">
+    import { supabase } from "./supabase/config.js";
+
+    async function loadTeams() {
+        const { data } = await supabase.from("teams").select("*");
+        const container = document.body;
+
+        data.forEach(t => {
+            container.innerHTML += `<div>${t.name}</div>`;
+        });
+    }
+
+    loadTeams();
+</script>

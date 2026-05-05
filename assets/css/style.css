@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+}
+
+img {
+  object-fit: cover;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.sidebar {
+  width: 250px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    height: 100%;
+    z-index: 1000;
+    transition: 0.3s;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+}
+
+body {
+  padding: 10px;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.2rem;
+  }
+}
